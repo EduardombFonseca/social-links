@@ -27,10 +27,12 @@
 
 body {
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 580px;
   height: 712px;
   margin: 48px auto auto auto;
   padding: 24px;
@@ -70,12 +72,16 @@ body {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  animation: slide-out 0.4s;
+}
+
+#switch button:hover{
+  outline: 8px solid var(--background-color-hover);
 }
 
 .light #switch button {
-  right: 0px;
-  left: initial;
-  transition: all 0.1s;
+  animation: slide-in 0.4s forwards;
 }
 
 #switch span {
@@ -160,4 +166,32 @@ footer a {
   color: var(--text-color);
   font-size: 12px;
   font-family: Inter;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.png);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.png);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0%;
+  }
 }
